@@ -1,6 +1,7 @@
 package com.demon.HabrMail.service;
 
 import com.demon.HabrMail.model.RegisteredUserMessage;
+import jakarta.mail.internet.MimeMessage;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
@@ -41,14 +42,14 @@ public class MailService {
         System.out.println(registeredUserMessage.getEmail());
         System.out.println(registeredUserMessage.getLogin());
 
-//        String process = templateEngine.process("mail-template", context);
-//        javax.mail.internet.MimeMessage mimeMessage = emailSender.createMimeMessage();
-//        MimeMessageHelper helper = new MimeMessageHelper(mimeMessage);
-//        helper.setSubject(subject);
-//        helper.setText(process, true);
-//        helper.setTo(to);
-//
-//        emailSender.send(mimeMessage);
+        String process = templateEngine.process("main-template", context);
+        MimeMessage mimeMessage = emailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(mimeMessage);
+        helper.setSubject(subject);
+        helper.setText(process, true);
+        helper.setTo(to);
+
+        emailSender.send(mimeMessage);
     }
 
 }

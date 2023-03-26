@@ -29,7 +29,7 @@ public class RabbitConsumer {
 
         RegisteredUserMessage registeredUserMessage = objectMapper.readValue(message, RegisteredUserMessage.class);
 
-        mailService.sendRegisteredUserMessage(registeredUserMessage.getEmail(), "Subject", registeredUserMessage);
+        mailService.sendRegisteredUserMessage(registeredUserMessage.getEmail(), "Registration success!!!", registeredUserMessage);
     }
 
 }
